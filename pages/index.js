@@ -21,8 +21,20 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-const HomePage = () => {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+const HomePage = (props) => {
+  return <MeetupList meetups={props.meetups} />;
+};
+
+export const getStaticProps = async () => {
+  // The data is fetched initially before the page is pre-rendered during the build process.
+  // It is not fetched in a second component render cycle on the client, like it normally
+
+  return {
+    // these are the props the HomePage receives
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+  };
 };
 
 export default HomePage;
