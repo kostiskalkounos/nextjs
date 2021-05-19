@@ -42,4 +42,23 @@ export const getStaticProps = async () => {
   };
 };
 
+/*
+  export const getServerSideProps = async (context) => {
+  // This function runs after incoming request on the server
+  // It should be ussed instead of `getStaticProps` if we need access to the request
+  // and response objects or if we have data that changes multiple times every second
+
+  const req = context.req;
+  const res = context.res;
+
+  // feath data from an API
+
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+  };
+};
+*/
+
 export default HomePage;
