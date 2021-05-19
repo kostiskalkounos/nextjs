@@ -26,14 +26,19 @@ const HomePage = (props) => {
 };
 
 export const getStaticProps = async () => {
-  // The data is fetched initially before the page is pre-rendered during the build process.
+  // The data is fetched initially before the page is pre-rendered, during the build process.
   // It is not fetched in a second component render cycle on the client, like it normally
+  // This is better since it caches and reuses data, hence it is more eficient and faster
 
   return {
     // these are the props the HomePage receives
     props: {
       meetups: DUMMY_MEETUPS,
     },
+    // Incremental Static Generation:
+    // Regenerates the page for incoming requests
+    // This is the number of seconds it will wait before doing so
+    revalidate: 1,
   };
 };
 
