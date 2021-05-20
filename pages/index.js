@@ -1,11 +1,20 @@
 // domain-name.com/
 
+import Head from "next/head";
 import { MongoClient } from "mongodb";
 
 import MeetupList from "../components/meetups/MeetupList";
 
 const HomePage = (props) => {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <>
+      <Head>
+        <title>React Meetups</title>
+        <meta name="description" content="Best content" />
+      </Head>
+      <MeetupList meetups={props.meetups} />;
+    </>
+  );
 };
 
 export const getStaticProps = async () => {
@@ -27,9 +36,9 @@ export const getStaticProps = async () => {
     props: {
       meetups: meetups.map((meetup) => ({
         id: meetup._id.toString(),
-        title: meetup.title,
-        address: meetup.address,
-        image: meetup.image,
+        //title: meetup.title,
+        // address: meetup.address,
+        // image: meetup.image,
       })),
     },
     // Incremental Static Generation:
