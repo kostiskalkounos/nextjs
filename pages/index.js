@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
   // This is better since it caches and reuses data, hence it is more eficient and faster
 
   const client = await MongoClient.connect(
-    "mongodb+srv://kostis:kostis@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
+    "mongodb+srv://<fill>:<fill>@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");

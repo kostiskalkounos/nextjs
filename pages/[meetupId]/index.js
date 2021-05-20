@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
   // In dynamic pages, tell nextjs for which dynamic parameter values this page should be pre-generated
 
   const client = await MongoClient.connect(
-    "mongodb+srv://kostis:kostis@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
+    "mongodb+srv://<fill>:<fill>@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
@@ -34,7 +34,7 @@ export const getStaticPaths = async () => {
   client.close();
 
   return {
-    fallback: false,
+    fallback: "blocking",
     paths: meetups.map((meetup) => ({
       params: {
         meetupId: meetup._id.toString(),
@@ -50,7 +50,7 @@ export const getStaticProps = async (context) => {
   const meetupId = context.params.meetupId;
 
   const client = await MongoClient.connect(
-    "mongodb+srv://kostis:kostis@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
+    "mongodb+srv://<fill>:<fill>@cluster0.zhrlh.mongodb.net/meetups?retryWrites=true&w=majority"
   );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
